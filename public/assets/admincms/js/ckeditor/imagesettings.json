@@ -1,0 +1,6 @@
+{	"rootpath":"http://192.168.14.8:81/jochaho_site/",
+	"abspath":"D:/xampp/htdocs/jochaho_site/",
+	"editorimages":"media/",
+	"displayImagePath":"media/",
+	"sendittoServer":"/editor_images/"
+}

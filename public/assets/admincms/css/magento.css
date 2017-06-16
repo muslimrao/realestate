@@ -1,0 +1,51 @@
+.note-list {
+    overflow: hidden;
+    width: 100%;
+	list-style: outside none none;
+	padding-left:0px;
+}
+.entry-edit fieldset li, .entry-edit .fieldset li {
+    margin: 4px 0;
+}
+.note-list li {
+    background: rgba(0, 0, 0, 0) url("../img/icon_note_list.gif") no-repeat scroll 0 4px;
+    border-top: 1px solid #e3e3e3;
+    margin-top: 9px !important;
+    padding-bottom: 9px;
+    padding-left: 18px;
+}
+
+.separator, .pipe {
+    font-size: 0.9em;
+    padding: 0 6px;
+}
+
+.subdue {
+    color: #306375;
+}
+
+.height {
+	min-height: 200px;
+}
+/*
+.icon {
+	font-size: 47px;
+	color: #5CB85C;
+}
+*/
+.iconbig {
+	font-size: 77px;
+	color: #5CB85C;
+}
+
+.table > tbody > tr > .emptyrow {
+	border-top: none;
+}
+
+.table > thead > tr > .emptyrow {
+	border-bottom: none;
+}
+
+.table > tbody > tr > .highrow {
+	border-top: 3px solid;
+}

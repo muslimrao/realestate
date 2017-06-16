@@ -1,0 +1,150 @@
+@charset "utf-8";/* CSS Document */
+.a-right,.align-right {text-align:right;}
+.crud_controls{margin-bottom:30px;}
+.table_form tr:first-child td{border-top:none !important;}
+.fieldKey{width:30%;}
+.fieldValue{width:70%;}
+.table_form td{vertical-align:middle !important;}
+.table_form td.vTop{vertical-align:top !important;}
+.clear_border_bottom > td{border-top:none !important;}
+table.clear_first_tr_tds  tbody tr:first td{border-top:none !important;}
+.columndelete span{display:none;}
+.columndelete_3 span{display:block !important;}
+.add_menus_boxes.box_0 span.bg-light-blue{visibility:hidden;}
+.text_before_div{float:left;margin-top:8px;margin-right:10px;}
+.text_after_div{float:left;margin-top:8px;margin-left:10px;}
+.floatleft{float:left;}
+.fa-angle-double-right{width:10px !important;}
+.sidebar .sidebar-menu .treeview-menu > li > a{font-size:12px !important;}
+.validation_special{color:teal;}
+.required_field{color:red;font-weight:bold;}
+.input-error-class{border:1px solid #ff0000 !important;background-color:#ffeeee !important;}
+.ilinks_sortable li {cursor:move;}
+.rempadding{padding:0 !important;}
+.remmargin{margin:0 !important;}
+.mL10{margin-left:10px !important;}
+.width100perc{width:100% !important;}
+.display-block{display:block !important;}
+.hide-block{display:none;}
+.datepicker{padding:6px 12px;}
+.table .glyphicon{width:20px;}
+.table th{outline:none;}
+.tab-content{background:#ffffff;padding:60px 0;clear:both;}
+td{/*word-break:break-all;*/}
+#login-wrap{background:#eff2f9;padding:50px 0;}
+#login-wrap .form-control{height:50px;line-height:50px;padding:6px 12px 6px 80px;}
+#login-wrap .form-group{margin-bottom:24px;position:relative;margin-left:0;margin-right:0;padding:0px;}
+#login-wrap .form-group span.login_icon_wrap{position:absolute;width:70px;float:left;text-align:center;border-right:1px solid #ccc;height:49px;padding:10px 0;}
+.logo-wrap{width:100%;text-align:center;padding:60px 0;}
+#login-wrap .login-btn{background:#1B4792;padding:10px 50px;font-size:15px;border-radius:0;}
+#login-wrap .btn.pull-right{padding-right:0px}
+.form-error{color:#f00;margin:5px 0 0 0;}
+.imageWrap{background:#ffffff;border:2px solid #dddddd;border-radius:2px;padding:10px 5px;margin-top:20px;}
+.table thead th:first-child:after{content:'';}
+.category_panel_inner{background:#eaeaea;border:1px solid #c9c9c9;float:left;width:100%;margin:10px 0;}
+.category_panel_inner ul{list-style:none;float:left;width:100%;padding:0;margin:0;}
+.category_panel_inner ul li{width:100%;float:left;position:relative;}
+.category_panel_inner ul li .cat-wrap{width:100%;float:left;font-weight:100;height:44px;line-height:44px;font-size:13px;color:#fff;/* position:relative;*/padding-left:50px;background:#337ab7;}
+.category_panel_inner ul li .cat-wrap input{margin:0;}
+.category_panel_inner ul li input.commission_input{float:right;width:50px;margin:5px;}
+.category_panel_inner ul.subcat{width:100%;position:relative;}
+.category_panel_inner ul.subcat li{border-top:1px solid #efefef;position:relative;font-weight:600;font-size:12px;}
+.category_panel_inner ul.subcat li .cat-wrap{padding-left:75px;background:#c3c3c3;}
+.category_panel_inner ul.subcat li a{display:inline-block;width:100%;display:inline-block;padding:8px 0 8px 8%;text-decoration:none;outline:none;}
+.category_panel_inner ul.subcat li span{color:#404040;}
+.category_panel_inner ul.subsubcat li{font-weight:400;}
+.category_panel_inner ul.subsubcat li .cat-wrap{padding-left:100px;background:#eaeaea;color:#000;}
+.category_panel_inner ul.subsubcat li a{color:#797979;padding-left:12%;}
+.category_panel_inner ul.subsubcat .subsubcat li:before{left:14%;}
+.category_panel_inner li a.active{background:#EFF2F9;}
+.category_panel_inner ul li a.toggle{position:absolute;left:5px;width:32px;height:32px;line-height:32px;text-align:center;top:6px;bottom:0;font-size:15px;font-weight:800;background:#F9F9F9;padding:0px;}
+ul#productSearch {list-style:none;padding:0;margin:0;background:#3c8dbc;width:100%;float:left;}
+ul#productSearch li{padding:5px 10px;border-top:1px solid #ffffff;}
+ul#productSearch li a{color:#ffffff;}
+ul#productSearch li:hover{background:#000000;}
+.table .wrap_search_btn{;width:250px;padding:20px 0;}
+.align_right{float:right;}
+#all_categories {background:#eaeaea;width:100%;border:1px solid #ccc;float:left;min-height:240px;height:240px;}
+#all_categories #main_category ,#all_categories #sub_category ,#all_categories #sub_sub_category{width:33.33%;border-right:1px solid #ccc;float:left;height:100%;}
+#all_categories #sub_sub_category{border-right:none;}
+#all_categories ul{list-style:none;padding:0;margin:0;overflow:hidden;}
+#all_categories ul li{width:100%;border-bottom:1px solid #ccc;}
+#all_categories ul li a{width:100%;display:inline-block;color:#aaa;padding:10px 20px;}
+#all_categories ul li a:hover,#all_categories ul li a.active{background:#3c8dbc;color:#fff;}
+
+.loader-wrap{position:relative;width:100%;float:left;}
+.ajaxloader{background:urL('../images/ajax-loader.gif') no-repeat 50% 50%;width:24px;height:24px;position:absolute;margin:auto;top:0;bottom:0;right:10px;}
+
+.checkboxeslisting{padding:12px 0;list-style:none;}
+.checkboxeslisting li{padding:4px 0;}
+.checkboxeslisting li input[type="checkbox"]{margin:0 4px 0 0;vertical-align:middle;}
+.cat_comm{height:20px;margin-left:20px;position:absolute;z-index:999;right:5px;display:none;text-align:center;}
+
+.blockUI.blockOverlay{z-index:999999 !important;}
+.blockUI.blockMsg.blockPage{z-index:999999 !important;}
+
+.table .container_categories td {vertical-align:top !important;}
+.table .categories_list{height:400px;width:250px;}
+.table .wrap_search_btn{/*width:250px;*/ padding:20px 0;}
+.align_right{float:right;}
+.jstree_nocategoriesassigned{padding:15px;text-align:center;background-color:slategray;color:white;font-weight:bold;font-size:large;}
+table span.price-excl-tax span.price{ font-weight:bold;}
+
+.selectedSearch{ background:#CCC; border: 1px solid #06C;}
+.clearboth{ clear:both;}
+
+table tbody tr.selected {
+    background-color: -moz-ButtonHoverFace;
+}
+
+
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('../fonts/opensans-regular.eot');
+    src: url('../fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular.woff') format('woff'),
+         url('../fonts/opensans-regular.ttf') format('truetype'),
+         url('../fonts/opensans-regular.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.images_wrap .file_upload{padding:0.3em 0;}.images_wrap .file_tools{margin:1em 0 0;}.images_wrap .file_upload input[type="file"]{display:inline;}
+.images_wrap .image_set{margin-top:2em;padding-top:2em;border-top:1px solid #CCCCCC;}
+.images_wrap .image_set .setimage{display:table-cell;max-width:75px;width:10%;position:relative;}
+.images_wrap .image_set .wk_imagedelete{position:absolute;top:0px;left:5px;background:url(../img/f-cross_256.png) no-repeat;width:16px;height:16px;cursor:pointer;}
+.images_wrap .image_set .wk_imagedeleteload{font-weight:900;left:8px;position:absolute;top:2px;cursor:pointer;}
+
+
+.box .table tfoot{ display:table-header-group !important }
+
+
+
+/* To change position of close button to Top Right Corner */
+#colorbox #cboxClose
+{
+	top: 0;
+	right: 0;
+}
+
+#cboxLoadedContent{
+	margin-top:28px;
+	margin-bottom:0;
+}
+
+.fa.fa-gear{ display:none;}
+
+
+.datatTable_lock_loader{width: 100%; height: 100%; background-color: gray; position: relative;}
+.dataTable_processing_loader{    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;}
+
+.25_perc_margin{ margin:25px !important}
+@font-face {font-family:'open_sansregular';src:url('../fonts/opensans-regular.eot');src:url('../fonts/opensans-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/opensans-regular.woff') format('woff'),url('../fonts/opensans-regular.ttf') format('truetype'),url('../fonts/opensans-regular.svg#open_sansregular') format('svg');font-weight:normal;font-style:normal;}
+@font-face {font-family:'open_sansbold';src:url('../fonts/opensans-bold.eot');src:url('../fonts/opensans-bold.eot?#iefix') format('embedded-opentype'),url('../fonts/opensans-bold.woff') format('woff'),url('../fonts/opensans-bold.ttf') format('truetype'),url('../fonts/opensans-bold.svg#open_sansbold') format('svg');font-weight:normal;font-style:normal;}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jstree basic demos</title>
+	<style>
+	html { margin:0; padding:0; font-size:62.5%; }
+	body { max-width:800px; min-width:300px; margin:0 auto; padding:20px 10px; font-size:14px; font-size:1.4em; }
+	h1 { font-size:1.8em; }
+	.demo { overflow:auto; border:1px solid silver; min-height:100px; }
+	</style>
+	<link rel="stylesheet" href="./../../dist/themes/default/style.min.css" />
+</head>
+<body>
+	<h1>HTML demo</h1>
+	<div id="html" class="demo">
+		<ul>
+			<li data-jstree='{ "opened" : true }'>Root node
+				<ul>
+					<li data-jstree='{ "selected" : true }'>Child node 1</li>
+					<li>Child node 2</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<h1>Inline data demo</h1>
+	<div id="data" class="demo"></div>
+
+	<h1>Data format demo</h1>
+	<div id="frmt" class="demo"></div>
+
+	<h1>AJAX demo</h1>
+	<div id="ajax" class="demo"></div>
+
+	<h1>Lazy loading demo</h1>
+	<div id="lazy" class="demo"></div>
+
+	<h1>Callback function data demo</h1>
+	<div id="clbk" class="demo"></div>
+
+	<h1>Interaction and events demo</h1>
+	<button id="evts_button">select node with id 1</button> <em>either click the button or a node in the tree</em>
+	<div id="evts" class="demo"></div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="./../../dist/jstree.min.js"></script>
+	
+	<script>
+	// html demo
+	$('#html').jstree();
+
+	// inline data demo
+	$('#data').jstree({
+		'core' : {
+			'data' : [
+				{ "text" : "Root node", "children" : [
+						{ "text" : "Child node 1" },
+						{ "text" : "Child node 2" }
+				]}
+			]
+		}
+	});
+
+	// data format demo
+	$('#frmt').jstree({
+		'core' : {
+			'data' : [
+				{
+					"text" : "Root node",
+					"state" : { "opened" : true },
+					"children" : [
+						{
+							"text" : "Child node 1",
+							"state" : { "selected" : true },
+							"icon" : "jstree-file"
+						},
+						{ "text" : "Child node 2", "state" : { "disabled" : true } }
+					]
+				}
+			]
+		}
+	});
+
+	// ajax demo
+	$('#ajax').jstree({
+		'core' : {
+			'data' : {
+				"url" : "http://192.168.14.8:81/jochaho_site/sellercenter/public/assets/widgets/treelist/demo/basic/root.json",
+				"dataType" : "json" // needed only if you do not supply JSON headers
+			}
+		}
+	});
+
+	// lazy demo
+	$('#lazy').jstree({
+		'core' : {
+			'data' : {
+				"url" : "http://192.168.14.8:81/jochaho_site/sellercenter/public/assets/widgets/treelist/demo/basic/root.json",
+				"dataType" : "json" // needed only if you do not supply JSON headers
+			},
+			'check_callback' : function(o, n, p, i, m) {
+							if(m && m.dnd && m.pos !== 'i') { return false; }
+							if(o === "move_node" || o === "copy_node") {
+								if(this.get_node(n).parent === this.get_node(p).id) { return false; }
+							}
+							return true;
+						},
+			'force_text' : true,
+			'themes' : {
+				'responsive' : false,
+				'variant' : 'small',
+				'stripes' : true
+			}
+		},
+		'sort' : function(a, b) {
+						return this.get_type(a) === this.get_type(b) ? (this.get_text(a) > this.get_text(b) ? 1 : -1) : (this.get_type(a) >= this.get_type(b) ? 1 : -1);
+					},
+		'contextmenu' : {
+						'items' : function(node) {
+							var tmp = $.jstree.defaults.contextmenu.items();
+							delete tmp.create.action;
+							tmp.create.label = "New";
+							tmp.create.submenu = {
+								"create_folder" : {
+									"separator_after"	: true,
+									"label"				: "Folder",
+									"action"			: function (data) {
+										var inst = $.jstree.reference(data.reference),
+											obj = inst.get_node(data.reference);
+										inst.create_node(obj, { type : "default" }, "last", function (new_node) {
+											setTimeout(function () { inst.edit(new_node); },0);
+										});
+									}
+								},
+								"create_file" : {
+									"label"				: "File",
+									"action"			: function (data) {
+										var inst = $.jstree.reference(data.reference),
+											obj = inst.get_node(data.reference);
+										inst.create_node(obj, { type : "file" }, "last", function (new_node) {
+											setTimeout(function () { inst.edit(new_node); },0);
+										});
+									}
+								}
+							};
+							if(this.get_type(node) === "file") {
+								delete tmp.create;
+							}
+							return tmp;
+						}
+					},
+		'types' : {
+			'default' : { 'icon' : 'folder' },
+			'file' : { 'valid_children' : [], 'icon' : 'file' }
+		},
+		'unique' : {
+			'duplicate' : function (name, counter) {
+				return name + ' ' + counter;
+			}
+		},
+		'plugins' : ['state','dnd','sort','types','unique', 'contextmenu'] //'contextmenu',
+	})
+	.on('delete_node.jstree', function (e, data) {
+					$.get('?operation=delete_node', { 'id' : data.node.id })
+						.fail(function () {
+							data.instance.refresh();
+						});
+				})
+				.on('create_node.jstree', function (e, data) {
+					$.get('?operation=create_node', { 'type' : data.node.type, 'id' : data.node.parent, 'text' : data.node.text })
+						.done(function (d) {
+							data.instance.set_id(data.node, d.id);
+						})
+						.fail(function () {
+							data.instance.refresh();
+						});
+				})
+				.on('rename_node.jstree', function (e, data) {
+					$.get('?operation=rename_node', { 'id' : data.node.id, 'text' : data.text })
+						.done(function (d) {
+							data.instance.set_id(data.node, d.id);
+						})
+						.fail(function () {
+							data.instance.refresh();
+						});
+				})
+				.on('move_node.jstree', function (e, data) {
+					$.get('?operation=move_node', { 'id' : data.node.id, 'parent' : data.parent })
+						.done(function (d) {
+							//data.instance.load_node(data.parent);
+							data.instance.refresh();
+						})
+						.fail(function () {
+							data.instance.refresh();
+						});
+				})
+				.on('copy_node.jstree', function (e, data) {
+					$.get('?operation=copy_node', { 'id' : data.original.id, 'parent' : data.parent })
+						.done(function (d) {
+							//data.instance.load_node(data.parent);
+							data.instance.refresh();
+						})
+						.fail(function () {
+							data.instance.refresh();
+						});
+				})
+				.on('changed.jstree', function (e, data) {
+					if(data && data.selected && data.selected.length) {
+						$.get('?operation=get_content&id=' + data.selected.join(':'), function (d) {
+							if(d && typeof d.type !== 'undefined') {
+								$('#data .content').hide();
+								switch(d.type) {
+									case 'text':
+									case 'txt':
+									case 'md':
+									case 'htaccess':
+									case 'log':
+									case 'sql':
+									case 'php':
+									case 'js':
+									case 'json':
+									case 'css':
+									case 'html':
+										$('#data .code').show();
+										$('#code').val(d.content);
+										break;
+									case 'png':
+									case 'jpg':
+									case 'jpeg':
+									case 'bmp':
+									case 'gif':
+										$('#data .image img').one('load', function () { $(this).css({'marginTop':'-' + $(this).height()/2 + 'px','marginLeft':'-' + $(this).width()/2 + 'px'}); }).attr('src',d.content);
+										$('#data .image').show();
+										break;
+									default:
+										$('#data .default').html(d.content).show();
+										break;
+								}
+							}
+						});
+					}
+					else {
+						$('#data .content').hide();
+						$('#data .default').html('Select a file from the tree.').show();
+					}
+				});
+
+	// data from callback
+	$('#clbk').jstree({
+		'core' : {
+			'data' : function (node, cb) {
+				if(node.id === "#") {
+					cb([{"text" : "Root", "id" : "1", "children" : true}]);
+				}
+				else {
+					cb(["Child"]);
+				}
+			}
+		}
+	});
+
+	// interaction and events
+	$('#evts_button').on("click", function () {
+		var instance = $('#evts').jstree(true);
+		instance.deselect_all();
+		instance.select_node('1');
+	});
+	$('#evts')
+		.on("changed.jstree", function (e, data) {
+			if(data.selected.length) {
+				alert('The selected node is: ' + data.instance.get_node(data.selected[0]).text);
+			}
+		})
+		.jstree({
+			'core' : {
+				'multiple' : false,
+				'data' : [
+					{ "text" : "Root node", "children" : [
+							{ "text" : "Child node 1", "id" : 1 },
+							{ "text" : "Child node 2" }
+					]}
+				]
+			}
+		});
+	</script>
+</body>
+</html>
