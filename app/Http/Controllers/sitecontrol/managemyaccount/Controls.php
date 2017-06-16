@@ -124,7 +124,7 @@ class Controls extends MY_controller
                                         "encrypt_name"              => TRUE);
 
             $config_thumb       = array();
-
+ 
 
 	
             $tmp_upload_image_1 = $this->upload_image($request, $validator, $config_image, $config_thumb, $other_upload);
